@@ -21,7 +21,7 @@ export default function Login() {
             setError('');
             const user = await login({ email, password });
             localStorage.setItem('user', JSON.stringify(user));
-            localStorage.setItem('isAuthenticated', true);
+            localStorage.setItem('isAuthenticatedd', true);
             navigate('/home');
         } catch (err) {
             setError('Invalid email or password');

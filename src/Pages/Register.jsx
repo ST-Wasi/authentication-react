@@ -24,7 +24,7 @@ export default function Register() {
             const user = await register({ email, password, name });
             console.log('✌️user --->', user);
             setUser(user);
-            // navigate('/login');
+            navigate('/login');
         } catch (err) {
             console.log('✌️err --->', err);
             setError('Registration failed. Please try again.');

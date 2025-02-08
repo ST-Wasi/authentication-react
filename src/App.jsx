@@ -6,14 +6,15 @@ import Register from './Pages/Register';
 import Home from './Pages/Home';
 
 function PrivateRoute({ children }) {
-  const { isAuthenticated, user } = useAuth();
-  return localStorage.getItem('isAuthenticatedd') == true ? <>{children}</> : <Navigate to="/login" />;
+  const { isAuthenticated } = useAuth();
+  return localStorage.getItem('isAuthenticatedd') === 'true' ? <>{children}</> : <Navigate to="/login" />;
 }
 
 function PublicRoute({ children }) {
   const { isAuthenticated } = useAuth();
-  return localStorage.getItem('isAuthenticatedd') != true ? <>{children}</> : <Navigate to="/" />;
+  return localStorage.getItem('isAuthenticatedd') !== 'true' ? <>{children}</> : <Navigate to="/home" />;
 }
+
 function AppRoutes() {
   return (
     <Routes>
@@ -28,9 +29,9 @@ function AppRoutes() {
         </PublicRoute>
       } />
       <Route path="/home" element={
-        // <PrivateRoute>
-        <Home />
-        // </PrivateRoute>
+        <PrivateRoute>
+          <Home />
+        </PrivateRoute>
       } />
     </Routes>
   );
