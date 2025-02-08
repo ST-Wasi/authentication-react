@@ -10,7 +10,7 @@ export default function Home() {
   function handleLogout() {
     // setUser(null);
     localStorage.removeItem('user');
-    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('isAuthenticatedd');
     navigate('/login');
   }
 
