@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Home() {
-  const { user, setUser } = useAuth();
+  const { user, setUser, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   function handleLogout() {
-    setUser(null);
+    // setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('isAuthenticated');
     navigate('/login');
   }
 

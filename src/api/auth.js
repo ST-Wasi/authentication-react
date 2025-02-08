@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3434/api";
+const API_URL = "http://localhost:4242";
 
 export async function login(credentials) {
   const response = await fetch(`${API_URL}/login`, {
@@ -13,7 +13,7 @@ export async function login(credentials) {
     throw new Error("Login failed");
   }
 
-  return response.json();
+  return await response.json();
 }
 
 export async function register(credentials) {
@@ -29,5 +29,5 @@ export async function register(credentials) {
     throw new Error("Registration failed");
   }
 
-  return response.json();
+  return await response.json();
 }

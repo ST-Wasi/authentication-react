@@ -20,10 +20,13 @@ export default function Register() {
         try {
             setLoading(true);
             setError('');
+            console.log('✌️email, password, name --->', email, password, name);
             const user = await register({ email, password, name });
+            console.log('✌️user --->', user);
             setUser(user);
-            navigate('/');
+            // navigate('/login');
         } catch (err) {
+            console.log('✌️err --->', err);
             setError('Registration failed. Please try again.');
         } finally {
             setLoading(false);

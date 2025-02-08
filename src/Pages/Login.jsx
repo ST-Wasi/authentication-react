@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
     const navigate = useNavigate();
-    const { setUser } = useAuth();
+    const { setUser, setIsAuthenticated } = useAuth();
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -20,8 +20,9 @@ export default function Login() {
             setLoading(true);
             setError('');
             const user = await login({ email, password });
-            setUser(user);
-            navigate('/');
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('isAuthenticated', true);
+            navigate('/home');
         } catch (err) {
             setError('Invalid email or password');
         } finally {
